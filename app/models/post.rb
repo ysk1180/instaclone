@@ -8,4 +8,6 @@ class Post < ApplicationRecord
 
   # お気に入り機能で誰の投稿をお気に入りしたかを表示するのにアソシエーションが必要で記載（mutter）で作ったものを参考にした
   belongs_to :user, optional: true
+
+  validates :image, presence: true
 end
