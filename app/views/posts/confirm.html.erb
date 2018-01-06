@@ -1,0 +1,21 @@
+<h1>投稿内容の確認</h1>
+
+<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <%= hidden_field_tag :"cache[image]", @post.image.cache_name %>
+  <p>
+    <strong>Content:</strong>
+    <%= @post.content %>
+  </p>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @post.image_url %>
+  </p>
+  <%= form.submit  "投稿" %>
+<% end %>
+<br>
+<%= form_with(model: @post, url: new_post_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :content %>
+  <%= hidden_field_tag :"cache[image]", @post.image.cache_name %>
+  <%= form.submit "入力画面へ戻る",name: 'back' %>
+<% end %>

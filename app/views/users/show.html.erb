@@ -1,0 +1,32 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<h1>プロフィール</h1>
+<br>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<!-- <p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p> -->
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.image_url if @user.image.present? %>
+</p>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<br>
+<!-- <%= link_to 'Back', users_path %> -->
+<h1>お気に入り一覧</h1>
+<br>
+<% @favorite_posts.each do |a| %>
+  <%= a.post.content %>
+  <%= image_tag a.post.image_url %>
+<% end %>
